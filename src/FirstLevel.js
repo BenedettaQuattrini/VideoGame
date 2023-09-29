@@ -8,7 +8,7 @@ export class FirstLevel extends Phaser.Scene{
     player;
     enemies;
     bullets;
-
+    sfondoGruppo;
     //serve per caricare gli asset(png) nel livello - primo ad essere eseguito
     preload(){
         this.load.spritesheet('player','assets/ship_0000.png',{frameWidth:200,frameHeight:200});
@@ -16,7 +16,13 @@ export class FirstLevel extends Phaser.Scene{
         this.load.spritesheet('enemy2','assets/ship_0016.png',{frameWidth:100,frameHeight:100});
         this.load.spritesheet('enemy3','assets/ship_0020.png',{frameWidth:100,frameHeight:100});
         this.load.spritesheet('enemy4','assets/ship_0022.png',{frameWidth:100,frameHeight:100});
-        this.load.image('bullet','assets/spaceMissiles_001.png');
+        this.load.image('bullet','assets/spaceMissiles_001.png');      
+        this.load.image('pianeta1', 'assets/pianeta1.jpg');
+        this.load.image('pianeta2', 'assets/pianeta2.jpg');
+        this.load.image('pianeta3', 'assets/pianeta3.jpg');
+            // Carica altre immagini dei pianeti
+        }
+        
     }
 
     //eseguito subito dopo il preload
@@ -25,12 +31,10 @@ export class FirstLevel extends Phaser.Scene{
         this.enemies = this.physics.add.group();
         this.bullets = this.physics.add.group();
 
-        this.player = new Player(this,500,700,'player');
+        this.player = new Player(this,500,600,'player');
         this.player.setRotation(Phaser.Math.DegToRad(0)); // Imposta la rotazione iniziale
         
         /* this.cameras.main.startFollow(this.player) */
-
-        
 
         this.time.addEvent({
             delay: 5000,
@@ -63,15 +67,17 @@ export class FirstLevel extends Phaser.Scene{
         });
 
         
-
-        
-        
+        for (let i = 0; i <3; i++) {
+            let pianeta = sfondoGruppo.create(i * 1000,1000, 'pianeta' + (i % 2 + 1));
+            pianeta.setOrigin(0, 1);
+        };
     }
-
+    
 
     //eseguito in continuazione - game loop
     //gestisce la logica del gioco
-    update(){
+    update()
+    {
 
         
         this.enemies.children.iterate((enemy)=>{
@@ -111,5 +117,5 @@ export class FirstLevel extends Phaser.Scene{
     }
 
 
-}
+
 

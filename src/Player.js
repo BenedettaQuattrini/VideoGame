@@ -17,21 +17,21 @@ export class Player extends Sprite {
     level.add.existing(this);
     level.physics.world.enableBody(this);
     
-    level.input.keyboard.on("keydown-W", () => {
-      this.setVelocityY(-this.speed);
-      this.play('wolk')
-    });
-    level.input.keyboard.on("keyup-W", () => {
-      this.setVelocityY(0);
-      this.stop()
-    });
+    // level.input.keyboard.on("keydown-W", () => {
+    //   this.setVelocityY(-this.speed);
+    //   this.play('wolk')
+    // });
+    // level.input.keyboard.on("keyup-W", () => {
+    //   this.setVelocityY(0);
+    //   this.stop()
+    // });
 
-    level.input.keyboard.on("keydown-S", () => {
-      this.setVelocityY(this.speed);
-    });
-    level.input.keyboard.on("keyup-S", () => {
-      this.setVelocityY(0);
-    });
+    // level.input.keyboard.on("keydown-S", () => {
+    //   this.setVelocityY(this.speed);
+    // });
+    // level.input.keyboard.on("keyup-S", () => {
+    //   this.setVelocityY(0);
+    // });
 
     level.input.keyboard.on("keydown-D", () => {
       this.setVelocityX(this.speed);
